@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$bgColor: #202231;
+$mainColor: #fff;
+
+@keyframes upDown {
+    0% {
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(20px);
+    }
+    40% {
+        transform: translateY(0px);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $bgColor;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    color: $mainColor;
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        grid-area: 3 / 2 / 4 / 5;
+    }
+
+    .icon {
+        display: grid;
+        place-content: center;
+        grid-area: 5 / 3 / 6 / 4;
+
+        div {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            border: 2px solid $mainColor;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            animation: upDown 1.5s infinite;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 18px;
+                height: 18px;
+                border-right: 2px solid $mainColor;
+                border-bottom: 2px solid $mainColor;
+                transform: rotate(45deg);
+                bottom: 43%;
+                left: 14px;
+            }
+        }
+        div:hover {
+            border-color: $bgColor;
+            background-color: $mainColor;
+
+            &::before {
+                border-color: $bgColor;
+            }
+        }
+    }
+}
+
+.animatnion-container {
+    display: grid;
+    grid-gap: 200px;
+
+    .title {
+        border-top: 1px solid $mainColor;
+        border-bottom: 1px solid $mainColor;
+    }
+
+    .content {
+        display: flex;
+        justify-content: flex-end;
+
+        .box {
+            width: 70%;
+            min-width: 300px;
+            line-height: 150px;
+            color: #fff;
+            text-align: center;
+            font-size: 2rem;
+            border: 3px solid $mainColor;
+            text-transform: capitalize;
+        }
+
+        &:nth-child(even) {
+            justify-content: normal;
+        }
+    }
+}
