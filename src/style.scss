@@ -5,7 +5,7 @@
 $bgColor: #202231;
 $mainColor: #fff;
 
-@keyframes upDown {
+@keyframes downScroll {
     0% {
         transform: translateY(0px);
     }
@@ -14,6 +14,18 @@ $mainColor: #fff;
     }
     40% {
         transform: translateY(0px);
+    }
+}
+
+@keyframes upScroll {
+    0% {
+        transform: rotate(180deg) translateY(0px);
+    }
+    20% {
+        transform: rotate(180deg) translateY(20px);
+    }
+    40% {
+        transform: rotate(180deg) translateY(0px);
     }
 }
 
@@ -48,38 +60,6 @@ body {
         display: grid;
         place-content: center;
         grid-area: 5 / 3 / 6 / 4;
-
-        div {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            border-radius: 100%;
-            border: 2px solid $mainColor;
-            cursor: pointer;
-            transition: all 0.3s;
-
-            animation: upDown 1.5s infinite;
-
-            &::before {
-                content: "";
-                position: absolute;
-                width: 18px;
-                height: 18px;
-                border-right: 2px solid $mainColor;
-                border-bottom: 2px solid $mainColor;
-                transform: rotate(45deg);
-                bottom: 43%;
-                left: 14px;
-            }
-        }
-        div:hover {
-            border-color: $bgColor;
-            background-color: $mainColor;
-
-            &::before {
-                border-color: $bgColor;
-            }
-        }
     }
 }
 
@@ -109,6 +89,46 @@ body {
 
         &:nth-child(even) {
             justify-content: normal;
+        }
+    }
+}
+
+.scroll-button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid $mainColor;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &.up {
+        animation: upScroll 1.5s infinite;
+        transform: rotate(180deg);
+    }
+
+    &.down {
+        animation: downScroll 1.5s infinite;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-right: 2px solid $mainColor;
+        border-bottom: 2px solid $mainColor;
+        transform: rotate(45deg);
+        bottom: 43%;
+        left: 14px;
+    }
+
+    &:hover {
+        border-color: $bgColor;
+        background-color: $mainColor;
+
+        &::before {
+            border-color: $bgColor;
         }
     }
 }

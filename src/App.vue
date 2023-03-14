@@ -6,11 +6,12 @@
         :name="name"
         :options="options"
     />
+    <Footer />
 </template>
 
 <script setup>
 import { onMounted, getCurrentInstance } from "vue";
-import { Main, Sample } from "@components";
+import { Main, Footer, Sample } from "@components";
 
 const aosConfig = [
     {
