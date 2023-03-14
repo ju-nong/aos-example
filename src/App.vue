@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <Main />
-        <Sample
-            v-for="({ name, options }, index) in aosConfig"
-            :key="index"
-            :name="name"
-            :options="options"
-        />
-    </div>
+    <Main />
+    <Sample
+        v-for="({ name, options }, index) in aosConfig"
+        :key="index"
+        :name="name"
+        :options="options"
+    />
 </template>
 
 <script setup>
